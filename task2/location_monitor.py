@@ -2,8 +2,7 @@
 
 import rospy
 from nav_msgs.msg import Odometry
-count = 0
-
+#count = 0
 
 def callback(msg):
 	x = msg.pose.pose.position.x
@@ -18,9 +17,8 @@ def callback(msg):
 
 def main():
 	rospy.init_node('location_monitor')
-	count += 1
 	rospy.Subscriber('/odom', Odometry, callback)
-	rospy.loginfo('count:{}'.format(count))
+	#rospy.loginfo('count:{}'.format(count))
 	rospy.spin()
 
 if __name__ == '__main__':
