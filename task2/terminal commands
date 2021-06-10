@@ -1,0 +1,9 @@
+Terminal 1 - 
+export TURTLEBOT3_MODEL=waffle_pi
+roslaunch turtlebot3_gazebo
+
+Terminal 2 - 
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+Terminal 3 - 
+rosrun task2 location_monitor.py | cat >> logpose.txt
