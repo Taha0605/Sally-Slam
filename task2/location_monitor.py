@@ -2,9 +2,10 @@
 
 import rospy
 from nav_msgs.msg import Odometry
-#count = 0
+count = 0
 
 def callback(msg):
+	global count
 	x = msg.pose.pose.position.x
 	y = msg.pose.pose.position.y
 	vel_x = msg.twist.twist.linear.x
@@ -16,11 +17,12 @@ def callback(msg):
 
 
 def main():
-	rospy.init_node('location_monitor')
-	rospy.Subscriber('/odom', Odometry, callback)
-	#rospy.loginfo('count:{}'.format(count))
-	r=rospy.Rate(1)
-	r.sleep()
+	while not rospy.is_shutdown():
+		rospy.init_node('location_monitor')
+		rospy.Subscriber('/odom', Odometry, callback)
+		#rospy.loginfo('count:{}'.format(count))
+		r=rospy.Rate(1)
+		r.sleep()
 
 if __name__ == '__main__':
 	main()
