@@ -19,7 +19,8 @@ def main():
 	rospy.init_node('location_monitor')
 	rospy.Subscriber('/odom', Odometry, callback)
 	#rospy.loginfo('count:{}'.format(count))
-	rospy.spin()
+	r=rospy.Rate(1)
+	r.sleep()
 
 if __name__ == '__main__':
 	main()
